@@ -1,23 +1,47 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import queue
+import urllib.request as request
+import urllib.parse as parse
+import string
+import re
+import os
+import urllib.error as error
 
-initial_page = "http://www.renminribao.com"
+def baidu_tieba(url, begin_page, end_page):
+    count = 1
+    for i in range(begin_page, end_page + 1):
+        sName = 'C:/dmplay/info/' + str(i).zfill(5) + '.html'
+        print('正在下载第' + str(i) + '个页面, 并保存为' + sName)
+        m = request.urlopen(url + str(i)).read()
+        # 创建目录保存每个网页上的图片
+        dirpath = 'C:/dmplay/info/'
+        dirname = str(i)
+        new_path = os.path.join(dirpath, dirname)
+        if not os.path.isdir(new_path):
+            os.makedirs(new_path)
+        page_data = m.decode('utf-8')
+        page_image = re.compile('<img src=\"(.+?)\"')
+        for image in page_image.findall(page_data):
+            pattern = re.compile(r'^http://.*.png$')
+            if pattern.match(image):
+                try:
+                    image_data = request.urlopen(image).read()
+                    image_path = dirpath + dirname + '/' + str(count) + '.png'
+                    count += 1
+                    print(image_path)
+                    with open(image_path, 'wb') as image_file:
+                        image_file.write(image_data)
+                    image_file.close()
+                except error.URLError as e:
+                    print('Download failed')
+        with open(sName, 'wb') as file:
+            file.write(m)
+        file.close()
 
-url_queue = queue.Queue()
-seen = set()
 
-seen.insert(initial_page)
-url_queue.put(initial_page)
-
-while(True): #一直进行直到海枯石烂
-    if url_queue.size()>0:
-        current_url = url_queue.get()    #拿出队例中第一个的url
-        store(current_url)               #把这个url代表的网页存储好
-        for next_url in extract_urls(current_url): #提取把这个url里链向的url
-            if next_url not in seen:
-                seen.put(next_url)
-                url_queue.put(next_url)
-    else:
-        break
+if __name__ == "__main__":
+    url = "http://tieba.baidu.com/p/"
+    begin_page = 1
+    end_page = 3
+    baidu_tieba(url, begin_page, end_page)
