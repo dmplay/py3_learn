@@ -7,13 +7,12 @@ def collatz(number):
     return number
 
 if __name__=="__main__":
-    flag=1
-    while(flag==1):
+    while(True):
         try:
             number = collatz(int(input("输入一个数字:")))
-            flag=2
+            break
         except ValueError:
-            print('Error: Invalid argument.')
+            print('Error: 请输入正整数.')
 
     while(number!=1):
         number = collatz(number)
