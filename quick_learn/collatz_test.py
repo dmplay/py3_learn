@@ -1,3 +1,5 @@
+# !/usr/bin/python
+# -*- coding: UTF-8 -*-
 def collatz(number):
     if number%2==0:
         number=number//2
