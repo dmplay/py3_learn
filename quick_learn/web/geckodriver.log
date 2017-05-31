@@ -82,3 +82,7 @@ JavaScript error: resource://gre/modules/AddonManager.jsm, line 1657: NS_ERROR_N
 JavaScript error: resource://gre/modules/AddonManager.jsm, line 2570: NS_ERROR_NOT_INITIALIZED: AddonManager is not initialized
 1495594832604	Marionette	WARN	TLS certificate errors will be ignored for this session
 JavaScript error: resource://app/modules/WindowsJumpLists.jsm, line 403: NS_ERROR_FILE_NOT_FOUND: Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIJumpListShortcut.app]
+JavaScript error: resource://app/modules/WindowsJumpLists.jsm, line 403: NS_ERROR_FILE_NOT_FOUND: Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIJumpListShortcut.app]
+JavaScript error: resource://app/modules/WindowsJumpLists.jsm, line 403: NS_ERROR_FILE_NOT_FOUND: Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIJumpListShortcut.app]
+JavaScript error: resource://app/modules/WindowsJumpLists.jsm, line 403: NS_ERROR_FILE_NOT_FOUND: Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIJumpListShortcut.app]
+JavaScript error: resource://gre/modules/AddonManager.jsm, line 1416: NS_ERROR_NOT_INITIALIZED: AddonManager is not initialized
